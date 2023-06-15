@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What's the weather?</title>
+    <link rel="stylesheet" href="src/sass/main.scss" />
+    <link rel="shortcut icon" type="image/png" href="./src/img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="module" src="src/js/script.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="app-title">What's the weather?</h1>
+    </header>
+
+    <main class="weather-display">
+      <form action="#" class="search">
+        <input
+          spellcheck="false"
+          required="required"
+          type="text"
+          class="search__input"
+        />
+        <span class="search__text">Enter location...</span>
+        <span class="search__background"></span>
+        <button class="search__button">
+          <img
+            class="search__icon search__icon-white"
+            src="./src/img/svg/svg-regular/search-icon.svg"
+            alt="search-icon"
+          />
+        </button>
+      </form>
+      <div class="card">
+        <div class="card__side card__side--front"></div>
+
+        <div class="card__side card__side--back">
+          <div class="card__future-forecast"></div>
+        </div>
+      </div>
+    </main>
+    <div class="sky-background">
+      <img
+        class="background-icon background-icon-sun"
+        src="./src/img/svg/svg-regular/sun-large.svg"
+        alt="sun-symbol"
+      />
+      <img
+        class="background-icon background-icon-moon"
+        src="./src/img/svg/svg-regular/moon-large.svg"
+        alt="moon-symbol"
+      />
+      <img
+        class="background-icon background-icon-cloud-1"
+        src="./src/img/svg/svg-regular/clouds.svg"
+        alt="cloud-symbol"
+      />
+      <img
+        class="background-icon background-icon-cloud-2"
+        src="./src/img/svg/svg-regular/clouds.svg"
+        alt="cloud-symbol"
+      />
+      <img
+        class="background-icon background-icon-cloud-3"
+        src="./src/img/svg/svg-regular/clouds.svg"
+        alt="cloud-symbol"
+      />
+
+      <img
+        class="background-icon-2 background-icon-star-1"
+        src="./src/img/svg/svg-regular/star-large.svg"
+        alt="star-symbol"
+      />
+      <img
+        class="background-icon-2 background-icon-star-2"
+        src="./src/img/svg/svg-regular/star-large.svg"
+        alt="star-symbol"
+      />
+      <img
+        class="background-icon-2 background-icon-star-3"
+        src="./src/img/svg/svg-regular/star-large.svg"
+        alt="star-symbol"
+      />
+      <img
+        class="background-icon-2 background-icon-star-4"
+        src="./src/img/svg/svg-regular/star-large.svg"
+        alt="star-symbol"
+      />
+      <img
+        class="background-icon-2 background-icon-star-5"
+        src="./src/img/svg/svg-regular/star-large.svg"
+        alt="star-symbol"
+      />
+      <img
+        class="background-icon-2 background-icon-star-6"
+        src="./src/img/svg/svg-regular/star-large.svg"
+        alt="star-symbol"
+      />
+    </div>
+  </body>
+</html>

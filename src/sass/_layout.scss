@@ -1,0 +1,16 @@
+.header {
+  font-size: 2.5rem;
+  padding: 6rem 0 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+main.weather-display {
+  flex: 1;
+  padding-bottom: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

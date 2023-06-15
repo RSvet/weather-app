@@ -1,0 +1,577 @@
+// sky elements
+.sky-background {
+  @media only screen and (max-width: $bp-small) {
+    display: none;
+  }
+}
+.background-icon {
+  width: 15rem;
+  height: 15rem;
+  position: fixed;
+  &-2 {
+    position: fixed;
+    width: 2rem;
+    height: 2rem;
+    z-index: -1;
+  }
+  &-sun {
+    top: 2%;
+    left: 2%;
+  }
+  &-moon {
+    top: 5%;
+    right: 2%;
+  }
+  &-cloud {
+    &-1 {
+      top: 5%;
+      left: 15%;
+    }
+    &-2 {
+      top: 10%;
+      left: 1%;
+    }
+    &-3 {
+      top: 20%;
+      left: 8%;
+    }
+  }
+  &-star {
+    &-1 {
+      top: 18%;
+      right: 3%;
+    }
+    &-2 {
+      top: 25%;
+      right: 3%;
+    }
+    &-3 {
+      top: 18%;
+      right: 18%;
+    }
+    &-4 {
+      top: 2%;
+      right: 6%;
+    }
+    &-5 {
+      top: 12%;
+      right: 8%;
+    }
+    &-6 {
+      top: 5%;
+      right: 15%;
+    }
+  }
+
+  @media only screen and (max-width: $bp-small), only screen and (hover: none) {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  @media only screen and (max-width: $bp-smallest) {
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+// main title
+.app-title {
+  line-height: 1;
+  position: relative;
+  text-shadow: 0 2px 10px var(--color-primary-blue);
+  text-align: center;
+
+  &::before {
+    content: "";
+    height: 0.2rem;
+    background-color: var(--color-primary-white);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    animation: underline 1.5s forwards;
+  }
+}
+
+@keyframes underline {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+    left: 0;
+  }
+}
+
+// search form
+.search {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+  margin-bottom: 5rem;
+  z-index: 100;
+
+  &__input {
+    z-index: 100;
+    font-size: 2.2rem;
+    font-family: inherit;
+    font-weight: 700;
+    color: inherit;
+    caret-color: var(--color-primary-blue);
+    text-transform: uppercase;
+    background: transparent;
+    width: 100%;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    outline: none;
+    border: none;
+    transition: 0.5s;
+  }
+  &__text {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-gray-transparent-2);
+    position: absolute;
+    left: 0;
+    bottom: 0.2rem;
+    padding: 2rem 1rem 0 1rem;
+    pointer-events: none;
+    transition: all 0.5s;
+    text-shadow: 0 2px 1px var(--color-primary-blue);
+  }
+  &__background {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 90%;
+    height: 0.2rem;
+    background: var(--color-gray-transparent-1);
+    border-radius: 0.4rem;
+    pointer-events: none;
+    transition: all 0.5s;
+    z-index: 99;
+  }
+
+  &__input:focus ~ &__text,
+  &__input:valid ~ &__text {
+    color: var(--color-primary-white);
+    transform: translateX(-1rem) translateY(-2.5rem);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  &__input:focus ~ &__background,
+  &__input:valid ~ &__background {
+    height: 4rem;
+    box-shadow: 0 0 0 0.3rem var(--color-gray-transparent-3);
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  &__icon {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  @media only screen and (max-width: $bp-large) {
+    margin-bottom: 10rem;
+  }
+
+  @media only screen and (max-width: $bp-medium) {
+    &__text {
+      color: var(--color-primary-white);
+    }
+    &__background {
+      background: var(--color-blue-transparent);
+    }
+  }
+}
+
+// weather card
+.card {
+  z-index: 100;
+  perspective: 150rem;
+  position: relative;
+  display: flex;
+  width: 48%;
+  height: 55rem;
+
+  &__side {
+    font-size: 1.5rem;
+    height: 55rem;
+    padding: 3rem;
+    border-radius: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    overflow: hidden;
+    transition: all 1s ease;
+    box-shadow: 0 1rem 7rem var(--color-gray-transparent-3);
+    display: flex;
+    flex-direction: column;
+
+    &--front {
+      background: var(--color-gradient-2);
+      justify-content: space-around;
+    }
+    &--back {
+      transform: rotateY(180deg);
+      background-image: var(--color-gradient-3);
+    }
+  }
+
+  &__location,
+  &__time {
+    font-size: 3rem;
+    text-shadow: 0 2px 10px var(--color-primary-blue);
+  }
+  &__time {
+    margin-bottom: 2rem;
+  }
+
+  &__today-data {
+    display: flex;
+  }
+  &__today-weather {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    flex-basis: 40%;
+    gap: 2rem;
+  }
+
+  &__today-weather-icon {
+    width: 12rem;
+    height: 12rem;
+  }
+  &__today-temperature {
+    font-size: 2rem;
+    text-align: center;
+    span {
+      font-size: 5rem;
+      display: block;
+      margin-bottom: -1.5rem;
+    }
+  }
+
+  &__today-details {
+    flex: 1;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    font-size: 1.8rem;
+  }
+  &__today-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 0;
+    background-color: var(--color-white-transparent);
+    border-radius: 1rem;
+    transition: all 0.3s;
+  }
+
+  &__today-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  &__back-heading {
+    flex-basis: 100%;
+  }
+  &__future-forecast {
+    padding-bottom: 4rem;
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  &__future-condition {
+    font-size: 2.5rem;
+    padding: 1rem;
+    background-color: var(--color-white-transparent);
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s;
+    text-align: center;
+  }
+
+  &__future-weather-icon {
+    margin-top: 5rem;
+    width: 6rem;
+    height: 6rem;
+    margin-bottom: auto;
+  }
+  &__additional {
+    text-align: center;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(0.5rem);
+    transition: all 0.5s linear;
+    font-size: 2rem;
+  }
+
+  &__note {
+    margin-top: 1rem;
+    align-self: flex-end;
+    font-size: 1.5rem;
+  }
+
+  &:hover &__side--front {
+    transform: rotateY(-180deg);
+  }
+
+  &:hover &__side--back {
+    transform: rotateY(0);
+  }
+
+  &__future-condition:hover {
+    background-color: var(--color-white-transparent-2);
+    transform: translateY(-0.5rem);
+  }
+
+  &__future-condition:hover &__additional {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes animate {
+    0% {
+      opacity: 0;
+      transform: rotateZ(50deg);
+    }
+    70% {
+      transform: skewX(10deg);
+    }
+    100% {
+      opacity: 1;
+      transform: rotateZ(0deg);
+    }
+  }
+
+  @keyframes moveUp {
+    0% {
+      opacity: 0;
+      transform: translateY(5rem);
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media only screen and (max-width: $bp-largest) {
+    width: 60%;
+    &__location,
+    &__time {
+      font-size: 2.8rem;
+    }
+  }
+
+  @media only screen and (max-width: $bp-large) {
+    width: 65%;
+    &__additional {
+      font-size: 1.8rem;
+    }
+  }
+
+  @media only screen and (max-width: $bp-medium),
+    only screen and (hover: none) {
+    flex-direction: column;
+    height: auto;
+    width: 80%;
+    &__side {
+      position: relative;
+      height: auto;
+
+      &--front {
+        background: var(--color-blue-transparent);
+      }
+
+      &--back {
+        transform: rotateY(0);
+        background: none;
+        box-shadow: none;
+        padding: 3rem 0;
+      }
+    }
+
+    &__today-data {
+      flex-direction: column;
+      padding: 0 3rem;
+    }
+    &__today-weather {
+      flex-direction: row;
+      justify-content: center;
+      gap: 5rem;
+      margin-bottom: 1rem;
+    }
+
+    &__note {
+      display: none;
+    }
+    &:hover &__side--front {
+      transform: rotateY(0);
+    }
+    &__future-forecast {
+      gap: 3rem;
+      justify-content: center;
+    }
+    &__future-condition {
+      padding: 2rem;
+      flex-basis: 40%;
+      font-size: 1.8rem;
+      gap: 2rem;
+      background: var(--color-blue-transparent);
+    }
+    &__back-heading {
+      display: none;
+    }
+
+    &__additional {
+      opacity: 1;
+      transform: translateY(0);
+      font-size: 1.8rem;
+      margin: 0;
+    }
+    &__future-weather-icon {
+      margin: 0;
+    }
+  }
+  @media only screen and (max-width: $bp-small) {
+    width: 95%;
+    &__future-condition {
+      flex-basis: 90%;
+      flex-direction: row;
+      justify-content: space-around;
+      background: var(--color-blue-transparent);
+      flex-wrap: wrap;
+    }
+
+    &__today-weather-icon {
+      opacity: 0;
+      transform: translateY(5rem);
+      animation: moveUp 0.7s ease-in-out forwards;
+    }
+
+    &__today-detail {
+      animation: animate 500ms ease-in-out forwards;
+      opacity: 0;
+    }
+
+    &__today-detail:nth-child(1) {
+      animation-delay: 0ms;
+    }
+    &__today-detail:nth-child(2) {
+      animation-delay: 150ms;
+    }
+    &__today-detail:nth-child(3) {
+      animation-delay: 300ms;
+    }
+    &__today-detail:nth-child(4) {
+      animation-delay: 450ms;
+    }
+    &__today-detail:nth-child(5) {
+      animation-delay: 600ms;
+    }
+    &__today-detail:nth-child(6) {
+      animation-delay: 750ms;
+    }
+  }
+
+  @media only screen and (max-width: $bp-smallest) {
+    &__location,
+    &__time {
+      font-size: 2.5rem;
+      text-align: center;
+    }
+    &__today-weather {
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    &__today-data {
+      padding: 0;
+    }
+
+    &__today-details {
+      grid-template-columns: 1fr;
+    }
+
+    &__future-condition {
+      flex-basis: 100%;
+    }
+    &__future-date,
+    &__future-weather-icon {
+      text-align: center;
+      flex-basis: 40%;
+      text-shadow: 0 3px 1px var(--color-primary-black);
+    }
+  }
+}
+
+// loading element
+.loader {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  height: 50rem;
+  width: 50%;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    padding-bottom: 100%;
+    width: 100%;
+    border: 1rem solid #ced5e0;
+    border-radius: 50%;
+    animation: loading 0.6s linear infinite;
+  }
+
+  &::after {
+    opacity: 0;
+    animation-delay: 0.2s;
+  }
+  @keyframes loading {
+    0% {
+      border: 1em solid #c0c3c9;
+      transform: scale(0);
+      opacity: 1;
+    }
+
+    100% {
+      border: 0 solid #b0b9c9;
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+}
+
+// error message
+.error-msg {
+  align-self: center;
+  @media only screen and (max-width: $bp-medium),
+    only screen and (hover: none) {
+    &.error-back {
+      display: none;
+    }
+  }
+}

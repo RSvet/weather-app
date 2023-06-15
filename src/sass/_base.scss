@@ -1,0 +1,121 @@
+
+:root {
+  --color-primary-white: rgb(255, 255, 255);
+  --color-primary-blue: rgb(0, 36, 153);
+  --color-primary-gray: rgb(143, 143, 143);
+  --color-primary-gray-2: rgb(216, 216, 205);
+  --color-primary-gray-2:
+  --color-primary-black: rgb(0, 0, 0);
+
+  --color-white-transparent: rgb(255, 255, 255, 0.1);
+  --color-white-transparent-2: rgb(255, 255, 255, 0.2);
+  --color-gray-transparent-1: rgba(255, 255, 255, 0.184);
+  --color-gray-transparent-2: rgba(235, 235, 238, 0.788);
+  --color-gray-transparent-3: rgba(238, 237, 237, 0.2);
+  --color-blue-transparent: rgb(0, 36, 153, 0.5);
+
+  --color-gradient-1: linear-gradient(
+    to right,
+    rgb(204, 216, 255),
+    rgb(36, 64, 156),
+    rgb(0, 6, 25)
+  );
+  --color-gradient-2: linear-gradient(
+    to right,
+    rgb(102, 124, 194),
+    rgb(30, 45, 95),
+    rgb(0, 22, 92)
+  );
+  --color-gradient-3: linear-gradient(
+    to right,
+    rgb(0, 22, 92),
+    rgb(30, 45, 95),
+    rgb(102, 124, 194)
+  );
+  --color-gradient-4: radial-gradient(
+    rgb(255, 255, 255),
+    rgb(255, 235, 189),
+    rgb(237, 240, 252)
+  );
+  --color-gradient-5: radial-gradient(
+    rgb(179, 180, 186),
+    rgb(77, 81, 94),
+    rgb(26, 31, 48)
+  );
+
+  --color-gradient-1-transparent: linear-gradient(
+    to right,
+    rgb(204, 216, 255, 0.5),
+    rgb(0, 36, 153, 0.5),
+    rgba(0, 6, 25, 0.5)
+  );
+}
+
+// breakpoints
+$bp-largest: 88em; //1408px
+$bp-large: 78em; //1250px
+$bp-medium: 56.25em; //900px
+$bp-small: 37.5em; //600px
+$bp-smallest: 25em; //400px
+
+// general style
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  @media only screen and (max-width: $bp-large) {
+    font-size: 53%;
+  }
+  @media only screen and (max-width: $bp-small) {
+    font-size: 50%;
+  }
+  @media only screen and (max-width: $bp-smallest) {
+    font-size: 45%;
+  }
+}
+body {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-primary-white);  
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  min-height: 100vh;
+  background: var(--color-gradient-1);
+
+  &::after, &::before {
+    content: "";
+    position: fixed;
+    top: 0rem;    
+    width: 24rem;
+    height: 24rem;
+    border-radius: 50%;
+    z-index: -1;    
+    filter: blur(80px);
+  }
+
+  &::after{
+    left: 0rem;
+    background: var(--color-gradient-4);
+  }
+
+  &::before {     
+    right: 0rem; 
+    background: var(--color-gradient-5);
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    &::after,
+    &::before {
+      display: none;     
+    }
+  }
+}
