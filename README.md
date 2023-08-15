@@ -1,7 +1,7 @@
 # Weather App
 
 This is weather forecast application, an API based project. By default it displays current weather information based on user's location.
-It provides weather data (current weather and 4-days forecast) for any searched location. This app is responsive for all screen sizes.
+It provides weather data (current weather and 4-days forecast) for any searched location. This app is responsive for all screen sizes. 
 
 ## Demo
 
